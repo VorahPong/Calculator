@@ -62,3 +62,13 @@ button:hover{
     background-color: #04AA6D; /* Green */
     color: white;
 }
+
+.numbers{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+#\2e{
+    flex-grow: 1;
+}

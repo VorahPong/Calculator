@@ -1,64 +1,20 @@
-// Add function
-function add(num1, num2){
-    return num1 + num2;
-}
-//
-
-// Subtract function
-function subtract(num1, num2){
-    return num1 - num2;
-}
-//
-
-// Multiply function
-function multiply(num1, num2){
-    return num1 * num2;
-}
-//
-
-// Divide function
-function divide(num1, num2){
-    return num1 / num2;
-}
-//
-
-// Operate function
-function operate(num1, num2, operate){
-    switch(operate){
-        case '+':
-            return add(num1, num2);
-            break;
-        case '-':
-            return subtract(num1, num2);
-            break;
-        case '*':
-            return multiply(num1, num2);
-            break;
-        case '/':
-            return divide(num1, num2);
-            break;
-        default:
-            throw new Error("ERROR!!");
-    }
-}
-//
-
 // variables
 const screen = document.querySelector('#screen');
-let num1 = null;
-let num2 = null;
 
-let operator = null;
+// store infix, post, and answer
+let infix = "";
+let postfix = "";
+let answer = "";
 //
 
-//
+// Making the buttons function
 const buttons = document.querySelectorAll('button');
 for(let index = 0; index < buttons.length; index++){
     buttons[index].addEventListener('click', function (btn){
         let id = btn.target.id;
 
         switch (id) {
-            case 'one':
+            case 'zero':
                 screen.innerText += '0';
                 break;
             case 'one':
@@ -88,29 +44,29 @@ for(let index = 0; index < buttons.length; index++){
             case 'nine':
                 screen.innerText += '9';
                 break;
+            case '.':
+                screen.innerText += '.';
+                break;
             case '+':
-                num1 = parseInt(screen.innerText);
-                operator = '+';
-                screen.innerText = '';
+                screen.innerText += '+';
                 break;
             case '-':
-                num1 = parseInt(screen.innerText);
-                screen.innerText = '';
-                operator = '-';
+                screen.innerText += '-';
                 break;
             case '*':
-                num1 = parseInt(screen.innerText);
-                screen.innerText = '';
-                operator = '*';
+                screen.innerText += '*';
                 break;
             case '/':
-                num1 = parseInt(screen.innerText);
-                screen.innerText = '';
-                operator = '/';
+                screen.innerText += '/';
+                break;
+            case '(':
+                screen.innerText += '(';
+                break;
+            case ')':
+                screen.innerText += ')';
                 break;
             case '=':
-                num2 = parseInt(screen.innerText);
-                screen.innerText = operate(num1, num2, operator);
+                
                 break;
             case 'delete':
                 screen.innerText = screen.innerText.slice(0, -1);
@@ -124,3 +80,33 @@ for(let index = 0; index < buttons.length; index++){
     });
 }
 //
+
+//functions
+function infix_to_postfix(){
+
+}
+
+//checking if group operators are valid
+function check_match(){
+    let stack = [];
+    for(let index = 0; index < infix.length; index++){
+        
+    }
+}
+
+function evaluate_postfix(){
+
+}
+
+//determining operator's priority
+function priority(operator){
+    if(operator == '*' || operator == '/') {
+        return 2;
+    }
+    else if(operator == '+' || operator == '-'){
+        return 1;
+    }
+    else{
+        return -1;
+    }
+}
