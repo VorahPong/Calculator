@@ -105,7 +105,57 @@ function check_match(){
 }
 
 function evaluate_postfix(){
+    let numbers = [];
+    let index, operator1, operator2, temp;
+    let op;
+    for (index = 0; index < postfix.fontsize(); index++) {
+        if (postfix[index] === ' ') { // if empty space skip
+            continue;
+        }
+        else if (isCharNumber(postfix[index])) { // take numbers
+            temp = 0;
+            while (isCharNumber(postfix[index])) {
+                temp = temp * 10 + (+postfix[index]);
+                index++;
+            }
+            numbers.push(temp);
+        }
+        else {  // for operators
+            op = postfix[index]; 
 
+            function takeNumbers(){
+                if(numbers.length !== 0) {
+                    operator1 = numbers.pop();
+                }
+                else {
+                    alert("error");
+                }
+                if (numbers.length !== 0) {
+                    operator2 = numbers.pop();
+                }
+            }
+
+            switch (op) {
+                case '+' :
+                    takeNumbers();
+                    numbers.push(operator1 + operator2);
+                    break;
+                case '-' :
+                    takeNumbers();
+                    numbers.push(operator1 - operator2);
+                    break;
+                case '*' :
+                    takeNumbers();
+                    numbers.push(operator1 * operator2);
+                    break;
+                case '/' :
+                    takeNumbers();
+                    numbers.push(operator2 / operator1);
+                    break;
+            }
+        }
+    }
+    return numbers.pop();
 }
 
 //determining operator's priority
@@ -119,4 +169,8 @@ function priority(operator){
     else {
         return -1;
     }
+}
+
+function isCharNumber(c) {
+    return c >= '0' && c <= '9';
 }
