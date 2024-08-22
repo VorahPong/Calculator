@@ -89,8 +89,18 @@ function infix_to_postfix(){
 //checking if group operators are valid
 function check_match(){
     let stack = [];
-    for(let index = 0; index < infix.length; index++){
-        
+    for (let index = 0; index < infix.length; index++){
+        if (infix[index] === '(') {
+            stack.push(infix[index]);
+        }
+        else if (infix[index] === ')') {
+            stack.pop();
+        }
+        if (stack.length === 0) {
+            return true;
+        }
+        alert("Group operator did not match, please check the problem.");
+        return false;
     }
 }
 
@@ -100,13 +110,13 @@ function evaluate_postfix(){
 
 //determining operator's priority
 function priority(operator){
-    if(operator == '*' || operator == '/') {
+    if (operator === '*' || operator === '/') {
         return 2;
     }
-    else if(operator == '+' || operator == '-'){
+    else if (operator === '+' || operator === '-') {
         return 1;
     }
-    else{
+    else {
         return -1;
     }
 }
