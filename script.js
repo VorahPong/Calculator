@@ -83,7 +83,59 @@ for(let index = 0; index < buttons.length; index++){
 
 //functions
 function infix_to_postfix(){
+    let calculator_stack = [];
+    postfix = "";
+    let index;
+    for (index = 0; index < infix.length; ) {
+        if(infix[index] === ' ') {
+            index++;
+        }
+        else if (infix[index] === '(') {
+            calculator_stack.push(infix[index]);
+            index++;
+        }
+        else if (infix[index] === ')') {
+            while (calculator_stack[calculator_stack.length-1] !== '(' && calculator_stack.length > 0) {
+                postfix += calculator_stack.pop();
+            }
+            calculator_stack.pop(); // discard '('
+            index++;
+        }
 
+        // put digit as a one number together
+        else if (isCharNumber(infix[index])) {
+            while (isCharNumber(infix[index])) {
+                postfix += infix[index];
+                index++;
+            }
+            postfix += ' ';
+        }
+
+        // for operators
+        else {
+            if (calculator_stack.length === 0) {
+                calculator_stack.push(infix[index]);
+                index++;
+            }
+            else {
+                if (priority(infix[index]) > priority(calculator_stack[calculator_stack.length-1])) {
+                    calculator_stack.push(infix[index]);
+                    index++;
+                }
+                else {
+                    while (calculator_stack.length !== 0 && priority(infix[index]) <= priority(calculator_stack[calculator_stack.length-1])) {
+                        postfix += calculator_stack.pop();
+                    }
+                    calculator_stack.push(infix[index]);
+                    index++;
+                }
+            }
+        }
+    }
+    // append all operator into the postfix
+    while (calculator_stack.length !== 0) {
+        postfix += calculator_stack.pop();
+    }
 }
 
 //checking if group operators are valid
