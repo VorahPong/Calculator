@@ -10,9 +10,9 @@ Project Description & How to Use the Project:
             the result is: 5
 
 
-    It can only work with non-negative and non-decimal numbers with operators '+' '-' '/' '' '(' ')'
+    It can only work with non-negative and with operators '+' '-' '/' '*' '(' ')'
         For example:
-            (3 + 4) 7 or (3+4)7
+            (3.1 + 4) 7 or (3.1+4)7
             (312 + 40) 2
 
 
