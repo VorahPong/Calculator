@@ -1,5 +1,6 @@
 # Calculator
 Calculator Project
+
 Project Description & How to Use the Project:
 
     This Calculator project was coded with HTML, CSS, and Javascript.
