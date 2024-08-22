@@ -173,11 +173,12 @@ function evaluate_postfix(){
             continue;
         }
         else if (isCharNumber(postfix[index])) { // take numbers
-            temp = 0;
+            temp = '';
             while (isCharNumber(postfix[index])) {
-                temp = temp * 10 + (+postfix[index]);
+                temp += postfix[index];
                 index++;
             }
+            temp = +temp;
             numbers.push(temp);
         }
         else {  // for operators
@@ -232,5 +233,5 @@ function priority(operator){
 }
 
 function isCharNumber(c) {
-    return c >= '0' && c <= '9';
+    return (c >= '0' && c <= '9') || c === '.';
 }
