@@ -4,7 +4,7 @@ const screen = document.querySelector('#screen');
 // store infix, post, and answer
 let infix = "";
 let postfix = "";
-let answer = "";
+let answer;
 //
 
 // Making the buttons function
@@ -66,7 +66,15 @@ for(let index = 0; index < buttons.length; index++){
                 screen.innerText += ')';
                 break;
             case '=':
-                
+                infix = screen.innerText;
+                if (check_match()) {
+                    infix_to_postfix();
+                    evaluate_postfix();
+                    screen.innerText = answer;
+                }
+                else {
+                    alert('input not valid');
+                }
                 break;
             case 'delete':
                 screen.innerText = screen.innerText.slice(0, -1);
@@ -160,7 +168,7 @@ function evaluate_postfix(){
     let numbers = [];
     let index, operator1, operator2, temp;
     let op;
-    for (index = 0; index < postfix.fontsize(); index++) {
+    for (index = 0; index < postfix.length; index++) {
         if (postfix[index] === ' ') { // if empty space skip
             continue;
         }
@@ -207,7 +215,7 @@ function evaluate_postfix(){
             }
         }
     }
-    return numbers.pop();
+    answer = numbers.pop();
 }
 
 //determining operator's priority
