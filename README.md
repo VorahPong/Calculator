@@ -1,6 +1,10 @@
 # Calculator
 Calculator Project
 
+<img width="200" alt="Screenshot 2024-08-22 at 8 10 12 PM" src="https://github.com/user-attachments/assets/76aa0165-f2ea-43a6-9b95-bb624bfc4680">
+<img width="200" alt="Screenshot 2024-08-22 at 8 10 17 PM" src="https://github.com/user-attachments/assets/518e926a-5b7b-4ce5-8266-f424a64fda7b">
+
+
 Project Description & How to Use the Project:
 
     This Calculator project was coded with HTML, CSS, and Javascript.
