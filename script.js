@@ -156,12 +156,12 @@ function check_match(){
         else if (infix[index] === ')') {
             stack.pop();
         }
-        if (stack.length === 0) {
-            return true;
-        }
-        alert("Group operator did not match, please check the problem.");
-        return false;
     }
+    if (stack.length === 0) {
+        return true;
+    }
+    alert("Group operator did not match, please check the problem.");
+    return false;
 }
 
 function evaluate_postfix(){
