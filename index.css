@@ -21,7 +21,8 @@
     
     background-color:darksalmon;
 
-    font-size: 20px;
+    font-size: 25px;
+    text-shadow: 0.5px 0.5px #383838;
 
     max-width: 350px;
     max-height: 50px;
@@ -70,5 +71,5 @@ button:hover{
 }
 
 #\2e{
-    flex-grow: 1;
+    flex-grow: 0.64;
 }
